@@ -1,0 +1,16 @@
+.high-scores {
+    float: left;
+}
+
+.countdown-timer {
+    float: right;
+}
+
+main {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.start-button {
+    margin: 0 auto;
+}
