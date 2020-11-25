@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+      <!-- Added link to the jQuery Library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>Coding Quiz</title>
 </head>
     <body>
@@ -12,9 +17,10 @@
             <h1 class="countdown-timer"></h1>
         </header>
 
-        <main class="quiz-container">
-            <button class="start-button">Start Quiz</button>
-
+        <section class="quiz-container">
+            <div>
+                <button class="start-button">Start Quiz</button>
+            </div>
                 <div class="question">
                     <div class="choice-container">
                         <p class="choice-prefix"></p>
@@ -33,8 +39,7 @@
                         <p class="choice-text" data-number="3"></p>
                     </div>
                 </div>
-
-        </main>
+        </section>
 
 
         <script src="./script.js"></script>
