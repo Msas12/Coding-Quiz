@@ -1,37 +1,70 @@
 // Questions 
-var questions = [
+var questions = [{
+  question: "How many elements can you apply an 'ID' attribute to?",
+  choiceA: "As many as you want",
+  choiceB: "3",
+  choiceC: "1",
+  choiceD: "128",
+  correctAnswer: "c"},
+{
+  question: "What does DOM stand for?",
+  choiceA: "Document Object Model",
+  choiceB: "Display Object Management",
+  choiceC: "Digital Ordinance Model",
+  choiceD: "Desktop Oriented Mode",
+  correctAnswer: "a"},
+ {
+  question: "What is used primarily to add styling to a web page?",
+  choiceA: "HTML",
+  choiceB: "CSS",
+  choiceC: "Python",
+  choiceD: "React.js",
+  correctAnswer: "b"},
   {
-      title: "Commonly Used data types DO NOT include:",
-      choices: ["stings", "alerts", "booleans", "numbers"],
-      answer: "alerts"
-  },
+  question: "What HTML tags are JavaScript code wrapped in?",
+  choiceA: "&lt;div&gt;",
+  choiceB: "&lt;link&gt;",
+  choiceC: "&lt;head&gt;",
+  choiceD: "&lt;script&gt;",
+  correctAnswer: "d"},
   {
-      title: "The condition in an if / else statment is enclosed within _____.",
-      choices: ["parentheses", "quotes", "curly brackets", "square brackets"],
-      answer: "parentheses"
-  },
+  question: "When is localStorage data cleared?",
+  choiceA: "No expiration time",
+  choiceB: "On page reload",
+  choiceC: "On browser close",
+  choiceD: "On computer restart",
+  correctAnswer: "a"},  
   {
-      title: "What javascipt method can we use to select an html element?",
-      choices: ["document.queryselector()", "document.getElementChild", "document.getElementById", "Both 1 and 3"],
-      answer: "Both 1 and 3"
-  },
+  question: "What does WWW stand for?",
+  choiceA: "Web World Workings",
+  choiceB: "Weak Winter Wind",
+  choiceC: "World Wide Web",
+  choiceD: "Wendy Wants Waffles",
+  correctAnswer: "c"},
   {
-      title: "What html tag is NOT included in the HEAD tag?",
-      choices: ["link", "meta", "title", "header"],
-      answer: "header"
-  },
-  {
-      title: "What attribute is used in html to decorate content?",
-      choices: ["css", "class", "src", "style"],
-      answer: "style"
-  }
-]
+  question: "What HTML attribute references an external JavaScript file?",
+  choiceA: "href",
+  choiceB: "src",
+  choiceC: "class",
+  choiceD: "index",
+  correctAnswer: "b"},
 
+  ];
+
+// HTML Elements
 var countDown = document.querySelector('.countdown-timer')
 var startBtn = document.querySelector('.start-button')
+var choicesEl = document.querySelector("#choices");
+var buttonA = document.getElementById("a");
+var buttonB = document.getElementById("b");
+var buttonC = document.getElementById("c");
+var buttonD = document.getElementById("d");
 
-// Countdown start
+// Global Variables
 var secondsLeft = 120;
+var currentQuestionIndex = 0;
+var finalQuestionIndex = questions.length;
+var correct;
 
 //Countdown Function
 function startCountdown() {
@@ -61,16 +94,36 @@ function startQuiz() {
 
 //Get's Quesitons
 function getQustion() {
+  // Gets current question from array
   var currentQuestion = questions[currentQuestionIndex];
 
-  var questionText = $('#question-text')
-  questionText.textContent = currentQuestion.title
+  // Updates Question
+  var questionText = document.getElementById('question-text')
+  questionText.textContent = currentQuestion.question;
+    buttonA.innerHTML = currentQuestion.choiceA;
+    buttonB.innerHTML = currentQuestion.choiceB;
+    buttonC.innerHTML = currentQuestion.choiceC;
+    buttonD.innerHTML = currentQuestion.choiceD;
 
 }
 
+// function checkAnswer(answer){
+//   correct = quizQuestions[currentQuestionIndex].correctAnswer;
+
+//   if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
+//       score++;
+//       $('#result').html('Correct')
+//       currentQuestionIndex++;
+//       getQuestion();
+//       //display in the results div that the answer is correct.
+//   }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
+//       $('#result').html('Incorrect')
+//       currentQuestionIndex++;
+//       getQuestion();
+
 
 // Event Listeners
-// Starts countdown when start button is clicked
+// Starts countdown and shows quiz when start button is clicked
 startBtn.addEventListener('click', () => {
   startCountdown();
   startQuiz();

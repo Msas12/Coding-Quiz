@@ -23,6 +23,7 @@
             </div>
         </header>
 
+        <!--Title and Start Button-->
         <div>
             <h1 class="text-center">Coding Quiz</h1>
             <br>
@@ -31,43 +32,32 @@
             </div>
         </div>
 
-        <div class="hide" id="quiz-container">
-        
+        <!--Main Quiz section-->
+        <div id="hide" id="quiz-container">
+            
+            <!--Question Container-->
             <div class="card mt-1">
                 <div class="card-header">
                     <div class="card-body text-center">
-                        <h3 class="card-title"></h3>
-                        <h1 id="question-text"></h1><!--Question Text will insert here-->
+                        <h3 id="question-text"></h3><!--Question Text will insert here-->
                     </div>
                 </div>
-        
+                
+                <!--Answer Choices-->
                 <div class="card mt-1">
-
                     <div class="card-header"> 
-                        <div class="container card-body text-center">
+                        <div class="container card-body">
                             <div class="row">
-                                <button id="button-1" class="btn btn-info btn-choice" value="1">
-                                    <p></p><!--Answer A-->
-                                    <p></p><!--Answer Text-->
-                                </button>
+                                <button id="a" class="mx-auto border btn btn-info btn-choice w-25" value="1"></button>
                             </div>
                             <div class="row">
-                                <button id="button-2" class="btn btn-info btn-choice" value="2">
-                                    <p></p><!--Answer B-->
-                                    <p></p><!--Answer Text-->
-                                </button>
+                                <button id="b" class="mx-auto border btn btn-info btn-choice w-25" value="2"></button>
                             </div>
                             <div class="row">
-                                <button id="button-3" class="btn btn-info btn-choice" value="3">
-                                    <p></p><!--Answer C-->
-                                    <p></p><!--Answer Text-->
-                                </button>
+                                <button id="c" class="mx-auto border btn btn-info btn-choice w-25" value="3"></button>
                             </div>
                             <div class="row">
-                                <button id="button-4" class="btn btn-info btn-choice" value="4">
-                                    <p></p><!--Answer D-->
-                                    <p></p><!--Answer Text-->
-                                </button>
+                                <button id="d" class="mx-auto border btn btn-info btn-choice w-25" value="4"></button>
                             </div>
                         </div>
                     </div>
