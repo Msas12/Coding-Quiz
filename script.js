@@ -87,7 +87,7 @@ function startCountdown() {
 
 // Start's Quiz
 function startQuiz() {
-  $('.start-button').attr("class", "hide")
+  $('.start-button').attr("class", "d-none")
   $('#quiz-container').attr("class", "show")
     getQustion()
 }
