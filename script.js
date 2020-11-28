@@ -99,7 +99,7 @@ function getQustion() {
 
   // Updates Question
   var questionText = document.getElementById('question-text')
-  questionText.textContent = currentQuestion.question;
+    questionText.textContent = currentQuestion.question;
     buttonA.innerHTML = currentQuestion.choiceA;
     buttonB.innerHTML = currentQuestion.choiceB;
     buttonC.innerHTML = currentQuestion.choiceC;
@@ -107,19 +107,21 @@ function getQustion() {
 
 }
 
-// function checkAnswer(answer){
-//   correct = quizQuestions[currentQuestionIndex].correctAnswer;
+function checkAnswer(answer){
+  correct = questions[currentQuestionIndex].correctAnswer;
 
-//   if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
-//       score++;
-//       $('#result').html('Correct')
-//       currentQuestionIndex++;
-//       getQuestion();
-//       //display in the results div that the answer is correct.
-//   }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
-//       $('#result').html('Incorrect')
-//       currentQuestionIndex++;
-//       getQuestion();
+  if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
+      // score++;
+      $('#result').html('Correct')
+      currentQuestionIndex++;
+      getQuestion();
+      //display in the results div that the answer is correct.
+  }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
+      $('#result').html('Incorrect')
+      currentQuestionIndex++;
+      getQuestion();
+  }
+}
 
 
 // Event Listeners
