@@ -5,49 +5,49 @@ var questions = [{
   choiceB: "3",
   choiceC: "1",
   choiceD: "128",
-  correctAnswer: "c"},
+  correctAnswer: "1"},
 {
   question: "What does DOM stand for?",
   choiceA: "Document Object Model",
   choiceB: "Display Object Management",
   choiceC: "Digital Ordinance Model",
   choiceD: "Desktop Oriented Mode",
-  correctAnswer: "a"},
+  correctAnswer: "Document Object Model"},
  {
   question: "What is used primarily to add styling to a web page?",
   choiceA: "HTML",
   choiceB: "CSS",
   choiceC: "Python",
   choiceD: "React.js",
-  correctAnswer: "b"},
+  correctAnswer: "CSS"},
   {
   question: "What HTML tags are JavaScript code wrapped in?",
-  choiceA: "&lt;div&gt;",
-  choiceB: "&lt;link&gt;",
-  choiceC: "&lt;head&gt;",
-  choiceD: "&lt;script&gt;",
-  correctAnswer: "d"},
+  choiceA: "div",
+  choiceB: "link",
+  choiceC: "head",
+  choiceD: "script",
+  correctAnswer: "script"},
   {
   question: "When is localStorage data cleared?",
   choiceA: "No expiration time",
   choiceB: "On page reload",
   choiceC: "On browser close",
   choiceD: "On computer restart",
-  correctAnswer: "a"},  
+  correctAnswer: "No expiration time"},  
   {
   question: "What does WWW stand for?",
   choiceA: "Web World Workings",
   choiceB: "Weak Winter Wind",
   choiceC: "World Wide Web",
   choiceD: "Wendy Wants Waffles",
-  correctAnswer: "c"},
+  correctAnswer: "World Wide Web"},
   {
   question: "What HTML attribute references an external JavaScript file?",
   choiceA: "href",
   choiceB: "src",
   choiceC: "class",
   choiceD: "index",
-  correctAnswer: "b"},
+  correctAnswer: "src"},
 
   ];
 
@@ -107,21 +107,33 @@ function getQustion() {
 
 }
 
-function checkAnswer(answer){
-  correct = questions[currentQuestionIndex].correctAnswer;
+$(document).ready(function() {
+  $(".btn-choice").on("click", function() {
+    console.log("You clicked a button!!");
 
-  if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
-      // score++;
-      $('#result').html('Correct')
-      currentQuestionIndex++;
-      getQuestion();
-      //display in the results div that the answer is correct.
-  }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
-      $('#result').html('Incorrect')
-      currentQuestionIndex++;
-      getQuestion();
-  }
-}
+    // Then determine which button was clicked
+    var userChoice = jQuery(this).text(); 
+    console.log(userChoice.trim());
+
+    // Seting variable correct to correct answer
+    correct = questions[currentQuestionIndex].correctAnswer;
+
+    if (userChoice === correct && currentQuestionIndex !== finalQuestionIndex){
+        // score++;
+        //Display in the results div that the answer is correct
+        $('#result').html('Correct')
+        currentQuestionIndex++;
+        getQuestion();
+        console.log(getQustion())
+       
+
+    }else (userChoice !== correct && currentQuestionIndex !== finalQuestionIndex)
+        //Display in the results div that the answer is correct
+        $('#result').html('Incorrect')
+        currentQuestionIndex++;
+        getQuestion();
+  })
+})
 
 
 // Event Listeners
