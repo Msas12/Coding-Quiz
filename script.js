@@ -60,20 +60,24 @@ $(document).ready(function () {
   ];
 
   // HTML Elements
+  var highscoreDisplayScore = document.getElementById("highscore-score");
+  var highscoreInputName = document.getElementById("initials");
+  var highscoreDisplayName = document.getElementById("highscore-initials");
+  var submitScoreBtn = document.getElementById("submit-score");
   var countDown = document.querySelector('.countdown-timer')
   var startBtn = document.querySelector('.start-button')
-  var choicesEl = document.querySelector("#choices");
   var buttonA = document.getElementById("a");
   var buttonB = document.getElementById("b");
   var buttonC = document.getElementById("c");
   var buttonD = document.getElementById("d");
 
   // Global Variables
-  var secondsLeft = 120;
+  var secondsLeft = 70;
   var currentQuestionIndex = 0;
   var finalQuestionIndex = questions.length-1;
   var score = 0
   var correct;
+  
 
   //Countdown Function
   function startCountdown() {
@@ -89,17 +93,19 @@ $(document).ready(function () {
     }, 1000);
   }
 
-  // Gets ran when countdown times out
-  // function endQuiz() {
-
-  // }
 
   // Start's Quiz
   function startQuiz() {
     $('.start-button').attr("class", "d-none")
     $('#quiz-container').attr("class", "show")
-    $('#current-score').attr("class", "show").text = score
+    $('#current-score').text('Score: ' + score)
+    $('#current-score').attr("class", "show")
     getQuestion()
+  }
+
+  function updateScore() {
+    $('#current-score').text('Score: ' + score)  
+
   }
 
   //Get's Quesitons
@@ -119,7 +125,6 @@ $(document).ready(function () {
 
 
     $(".btn-choice").on("click", function () {
-      console.log("You clicked a button!!");
 
       // Then determine which button was clicked
       var userChoice = jQuery(this).text();
@@ -132,6 +137,7 @@ $(document).ready(function () {
       if (userChoice.trim() == correct && currentQuestionIndex !== finalQuestionIndex) {
         score++;
         console.log(score)
+        updateScore()
         //Display in the results div that the answer is correct
         $('#result').html('Correct')
         currentQuestionIndex++;
@@ -155,25 +161,41 @@ $(document).ready(function () {
     console.log('QuizEnded')
     $('#quiz-container').html(`
     <div class="container">
-    <form class="col-lg-6 offset-lg-4">
-        <div class="form-row align-items-center">
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Name</label>
-            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Initials">
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
-        </div>
-        </div>
-    </form>
+      <div id="final-score" class="justify-content-center">
+      </div>
+      <form class="col-lg-6 offset-lg-4">
+          <div class="form-row text-center">
+          <div class="col-auto">
+              <label class="sr-only" for="inlineFormInput">Name</label>
+              <input type="text" class="initials form-control mb-2" id="inlineFormInput" placeholder="Initials">
+          </div>
+          <div class="col-auto">
+              <button type="submit" id="submit-score" class="btn btn-primary mb-2">Submit</button>
+          </div>
+          </div>
+      </form>
   </div>
     `)
+
+    //Show Current Score
+    $('#final-score').text(score)
+
+    //Function to submit high score and go to high scores page
+    $('#submit-score').on('click', function (event){
+      event.preventDefault();
+      window.location.href = 'highscores.html';
+      submitScore()
+
+    })
+    
   }
 
 
 
 
-  // Event Listeners
+
+
+  // Initial Event Listeners
   // Starts countdown and shows quiz when start button is clicked
   startBtn.addEventListener('click', () => {
     startCountdown();
