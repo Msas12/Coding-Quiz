@@ -135,7 +135,7 @@ $(document).ready(function () {
       console.log(userChoice == correct);
 
       if (userChoice.trim() == correct && currentQuestionIndex !== finalQuestionIndex) {
-        score++;
+        score+=10;
         console.log(score)
         updateScore()
         //Display in the results div that the answer is correct
@@ -147,7 +147,7 @@ $(document).ready(function () {
       } else if (userChoice.trim() !== correct && currentQuestionIndex !== finalQuestionIndex){
         $('#result').html('Incorrect')
         currentQuestionIndex++;
-        secondsLeft-=10;
+        secondsLeft-=20;
         getQuestion();
       }
 
