@@ -60,8 +60,6 @@ $(document).ready(function () {
   ];
 
   // HTML Elements
-  var highscoreDisplayScore = document.getElementById("highscore-score");
-  var highscoreDisplayName = document.getElementById("highscore-initials");
   var countDown = document.querySelector('.countdown-timer')
   var buttonA = document.getElementById("a");
   var buttonB = document.getElementById("b");
@@ -202,41 +200,9 @@ $(document).ready(function () {
       localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
 
       window.location.href = 'highscores.html';
-      generateHighscores()
-
     })
-
+    
   }
-
-  // This function clears the list for the high scores and generates a new high score list from local storage
-  function generateHighscores(){
-    highscoreDisplayName.innerHTML = "";
-    highscoreDisplayScore.innerHTML = "";
-    var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
-    for (i=0; i<highscores.length; i++){
-        var newNameSpan = document.createElement("li");
-        var newScoreSpan = document.createElement("li");
-        newNameSpan.textContent = highscores[i].name;
-        newScoreSpan.textContent = highscores[i].score;
-        highscoreDisplayName.appendChild(newNameSpan);
-        highscoreDisplayScore.appendChild(newScoreSpan);
-    }
-  }
-
-  $('#playAgain').on('click', function(){
-    window.location.href = 'index.html'
-  })
-
-  $('#clearHighscore').on('click', function(){
-    window.localStorage.clear();
-    highscoreDisplayName.textContent = "";
-    highscoreDisplayScore.textContent = "";
-  })
-
-
-
-
-
 
 
   // Initial Event Listeners
