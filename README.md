@@ -4,7 +4,7 @@
 
 The following animation demonstrates the application functionality:
 
-![code quiz](asd)
+![code quiz](./assets/quiz.gif)
 
 
 ## Functionality of Webpage
