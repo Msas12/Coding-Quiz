@@ -1,11 +1,3 @@
 .header-container {
     height: 100px;
 }
-
-#high-score-lists {
-    border: solid 5px;
-    margin-right: 20px;
-    background-color: lightblue;
-    list-style-type: none;
-}
-

@@ -6,12 +6,12 @@ var highscoreDisplayName = document.getElementById("highscore-initials");
   function generateHighscores(){
     var highscores = JSON.parse(localStorage.getItem("savedHighscores"));
     for (i=0; i<highscores.length; i++){
-        var newNameSpan = document.createElement("li")
-        var newScoreSpan = document.createElement("li");
+        var newNameSpan = document.createElement("tr")
+        var newScoreSpan = document.createElement("tr");
         newNameSpan.textContent = highscores[i].name;
         newScoreSpan.textContent = highscores[i].score;
-        highscoreDisplayName.appendChild(newNameSpan);
-        highscoreDisplayScore.appendChild(newScoreSpan);
+        highscoreDisplayName.append(newNameSpan);
+        highscoreDisplayScore.append(newScoreSpan);
     }
   }
 

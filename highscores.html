@@ -12,25 +12,28 @@
         <header>
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                  <h1 class="display-4 text-center">High Scores</h1>
+                  <h1 id="high-scoreHeader" class="display-4 text-center">High Scores</h1>
                 </div>
               </div>
         </header>
-        <div id=highscoreContainer>
-            <div id="high-scorePage">
-                <div class="ml-2 row" id="highscore-header">
-                    <div class="col-4">
-                        <h3>Initials</h3>
-                    </div>
-                    <div class="col-8">
-                        <h3>Score</h3>
-                    </div>
-                </div>
-                <div class="ml-2 row" id="high-score-lists">
-                    <div class="col-4" id="highscore-initials"></div>
-                    <div class="col-8" id="highscore-score"></div>
-                </div>
-            </div>
+
+        <!--High Scores-->
+        <div class="container-fluid" id=highscoreContainer>
+            <table class="table" id="high-scorePage">
+                <thead class="thead-dark">
+                    <tr id="highscore-header">
+                        <th scope="col">Initials</th>
+                        <th scope="col">Score</th>
+                    </tr>
+                </thead>
+
+                <tr id="high-score-lists">
+                    <td id="highscore-initials"></td>
+                    <td id="highscore-score"></td>
+                </tr>
+            </table>
+
+            <!--End Game Buttons-->
             <div class="mt-5 ml-2" id="endGameBtns">
                 <button class="btn btn-primary" id="playAgain">Play Again</button>
                 <button class="btn btn-danger" id="clearHighscore">Clear Highscores</button>
