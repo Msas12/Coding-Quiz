@@ -61,11 +61,8 @@ $(document).ready(function () {
 
   // HTML Elements
   var highscoreDisplayScore = document.getElementById("highscore-score");
-  var highscoreInputName = document.getElementById("initials");
   var highscoreDisplayName = document.getElementById("highscore-initials");
-  var submitScoreBtn = document.getElementById("submit-score");
   var countDown = document.querySelector('.countdown-timer')
-  var startBtn = document.querySelector('.start-button')
   var buttonA = document.getElementById("a");
   var buttonB = document.getElementById("b");
   var buttonC = document.getElementById("c");
@@ -74,7 +71,7 @@ $(document).ready(function () {
   // Global Variables
   var secondsLeft = 70;
   var currentQuestionIndex = 0;
-  var finalQuestionIndex = questions.length-1;
+  var finalQuestionIndex = questions.length;
   var score = 0
   var correct;
   
@@ -112,6 +109,11 @@ $(document).ready(function () {
   function getQuestion() {
     // Gets current question from array
     var currentQuestion = questions[currentQuestionIndex];
+
+    // Finishes Quiz after final question
+    if (currentQuestionIndex === finalQuestionIndex) {
+      return endQuiz()
+    }
 
     // Updates Question
     var questionText = document.getElementById('question-text')
@@ -151,9 +153,7 @@ $(document).ready(function () {
         getQuestion();
       }
 
-      if (currentQuestionIndex == finalQuestionIndex) {
-        endQuiz()
-      }
+
     })
 
 
@@ -161,7 +161,7 @@ $(document).ready(function () {
     console.log('QuizEnded')
     $('#quiz-container').html(`
     <div class="container">
-      <div id="final-score" class="justify-content-center">
+      <div id="final-score" class="text-center mb-5">
       </div>
       <form class="col-lg-6 offset-lg-4">
           <div class="form-row text-center">
@@ -178,17 +178,61 @@ $(document).ready(function () {
     `)
 
     //Show Current Score
-    $('#final-score').text(score)
+    $('#final-score').text('Total Score: ' + score)
+
+    var highscoreInputName = document.querySelector('input')
 
     //Function to submit high score and go to high scores page
     $('#submit-score').on('click', function (event){
       event.preventDefault();
+
+      if(highscoreInputName.value === "") {
+        alert("Initials cannot be blank");
+        return false;
+      }else{
+        var savedHighscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+        var currentUser = highscoreInputName.value.trim()
+        var currentHighscore = {
+            name : currentUser,
+            score : score
+          }
+      }
+
+      savedHighscores.push(currentHighscore);
+      localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
+
       window.location.href = 'highscores.html';
-      submitScore()
+      generateHighscores()
 
     })
-    
+
   }
+
+  // This function clears the list for the high scores and generates a new high score list from local storage
+  function generateHighscores(){
+    highscoreDisplayName.innerHTML = "";
+    highscoreDisplayScore.innerHTML = "";
+    var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+    for (i=0; i<highscores.length; i++){
+        var newNameSpan = document.createElement("li");
+        var newScoreSpan = document.createElement("li");
+        newNameSpan.textContent = highscores[i].name;
+        newScoreSpan.textContent = highscores[i].score;
+        highscoreDisplayName.appendChild(newNameSpan);
+        highscoreDisplayScore.appendChild(newScoreSpan);
+    }
+  }
+
+  $('#playAgain').on('click', function(){
+    window.location.href = 'index.html'
+  })
+
+  $('#clearHighscore').on('click', function(){
+    window.localStorage.clear();
+    highscoreDisplayName.textContent = "";
+    highscoreDisplayScore.textContent = "";
+  })
+
 
 
 
@@ -197,7 +241,7 @@ $(document).ready(function () {
 
   // Initial Event Listeners
   // Starts countdown and shows quiz when start button is clicked
-  startBtn.addEventListener('click', () => {
+  $('.start-button').on('click', () => {
     startCountdown();
     startQuiz();
   })
