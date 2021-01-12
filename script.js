@@ -67,7 +67,7 @@ $(document).ready(function () {
   var buttonD = document.getElementById("d");
 
   // Global Variables
-  var secondsLeft = 70;
+  var secondsLeft = 5;
   var currentQuestionIndex = 0;
   var finalQuestionIndex = questions.length;
   var score = 0
@@ -78,11 +78,13 @@ $(document).ready(function () {
   function startCountdown() {
     var timerInterval = setInterval(function () {
       secondsLeft--;
-      countDown.textContent = 'Time Remaining: ' + secondsLeft;
+      countDown.textContent = 'Countdown: ' + secondsLeft;
 
-      if (secondsLeft === 0) {
+      if (secondsLeft <=0) {
         clearInterval(timerInterval);
-        // endQuiz();
+        endQuiz();
+      }else if (secondsLeft <11) {
+        $('.countdown-timer').css('animation', 'blinking 1s infinite')
       }
 
     }, 1000);
@@ -139,13 +141,13 @@ $(document).ready(function () {
         console.log(score)
         updateScore()
         //Display in the results div that the answer is correct
-        $('#result').html('Correct')
+        $('#result').html('Correct').css('color', 'green')
         currentQuestionIndex++;
         getQuestion();
 
         //Display in the results div that the answer is incorrect
       } else if (userChoice.trim() !== correct && currentQuestionIndex !== finalQuestionIndex){
-        $('#result').html('Incorrect')
+        $('#result').html('Incorrect').css('color', 'red')
         currentQuestionIndex++;
         secondsLeft-=20;
         getQuestion();
@@ -158,11 +160,10 @@ $(document).ready(function () {
   function endQuiz() {
     console.log('QuizEnded')
     $('#quiz-container').html(`
-    <div class="container">
-      <div id="final-score" class="text-center mb-5">
-      </div>
-      <form class="col-lg-6 offset-lg-4">
-          <div class="form-row text-center">
+    <div class="card bg-dark mx-auto">
+      <div id="final-score" class="text-center mb-5 mt-5 h4 text-light"></div>
+      <form>
+          <div class="form-row mx-auto justify-content-center">
           <div class="col-auto">
               <label class="sr-only" for="inlineFormInput">Name</label>
               <input type="text" class="initials form-control mb-2" id="inlineFormInput" placeholder="Initials">
@@ -172,7 +173,7 @@ $(document).ready(function () {
           </div>
           </div>
       </form>
-  </div>
+    </div>
     `)
 
     //Show Current Score
@@ -210,6 +211,7 @@ $(document).ready(function () {
   $('.start-button').on('click', () => {
     startCountdown();
     startQuiz();
+    $('#score-card').removeClass('d-none')
   })
 
 })

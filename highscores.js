@@ -8,8 +8,10 @@ var highscoreDisplayName = document.getElementById("highscore-initials");
     for (i=0; i<highscores.length; i++){
         var newNameSpan = highscores[i].name
         var newScoreSpan = highscores[i].score
-        highscoreDisplayName.append(newNameSpan);
-        highscoreDisplayScore.append(newScoreSpan);
+        // highscoreDisplayName.append(newNameSpan);
+        // highscoreDisplayScore.append(newScoreSpan);
+
+        $('#high-score-lists').append().html(`<td> ${newNameSpan}</td><td> ${newScoreSpan}</td>`)
     }
   }
 

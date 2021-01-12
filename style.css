@@ -11,6 +11,24 @@ html, body {
 }
 
 .card {
-  opacity: .75;
+  opacity: .85;
+  width: 90%;
 }
 
+.main-title {
+  text-shadow: 2px 2px 5px rgb(104, 252, 190);
+}
+
+@keyframes blinking {
+  0% {
+    color: #ff3d50;
+  }
+
+  100% {
+    color: #ffffff;
+  }
+}
+
+/* .countdown-timer{
+  animation: blinking 1s infinite;
+} */
