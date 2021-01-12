@@ -25,3 +25,6 @@ When you complete the quiz enter your initials and track your high scores!
 
 ## Link to website
 [Coding Quiz](https://msas12.github.io/Coding-Quiz/)
+
+## Creator Contact Info
+Mike Sasiela: mdsasiela@gmail.com
