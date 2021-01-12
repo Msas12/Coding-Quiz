@@ -1,3 +1,12 @@
+html, body { 
+    background: url(https://c4.wallpaperflare.com/wallpaper/222/225/123/code-html-minimalism-wallpaper-thumb.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
 .header-container {
     height: 100px;
 }
+
