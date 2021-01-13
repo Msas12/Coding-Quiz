@@ -149,7 +149,7 @@ $(document).ready(function () {
       } else if (userChoice.trim() !== correct && currentQuestionIndex !== finalQuestionIndex){
         $('#result').html('Incorrect').css('color', 'red')
         currentQuestionIndex++;
-        secondsLeft-=10;
+        secondsLeft-=20;
         getQuestion();
       }
 
