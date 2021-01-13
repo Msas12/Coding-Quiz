@@ -8,10 +8,8 @@ var highscoreDisplayName = document.getElementById("highscore-initials");
     for (i=0; i<highscores.length; i++){
         var newNameSpan = highscores[i].name
         var newScoreSpan = highscores[i].score
-        // highscoreDisplayName.append(newNameSpan);
-        // highscoreDisplayScore.append(newScoreSpan);
 
-        $('#high-score-lists').append().html(`<td> ${newNameSpan}</td><td> ${newScoreSpan}</td>`)
+        $('#high-score-lists').prepend(`<tr><td class="bg-dark text-light h5 text-center highscore-score">${newNameSpan}</td><td class="bg-dark text-light h5 text-center highscore-initials">${newScoreSpan}</td></tr>`)
     }
   }
 
@@ -21,10 +19,7 @@ var highscoreDisplayName = document.getElementById("highscore-initials");
 
   $('#clearHighscore').on('click', function(){
     window.localStorage.clear();
-    highscoreDisplayName.textContent = "";
-    highscoreDisplayScore.textContent = "";
+    $('#high-score-lists').html("")
   })
-
-
 
   generateHighscores()

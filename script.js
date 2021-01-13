@@ -67,7 +67,7 @@ $(document).ready(function () {
   var buttonD = document.getElementById("d");
 
   // Global Variables
-  var secondsLeft = 5;
+  var secondsLeft = 70;
   var currentQuestionIndex = 0;
   var finalQuestionIndex = questions.length;
   var score = 0
@@ -149,7 +149,7 @@ $(document).ready(function () {
       } else if (userChoice.trim() !== correct && currentQuestionIndex !== finalQuestionIndex){
         $('#result').html('Incorrect').css('color', 'red')
         currentQuestionIndex++;
-        secondsLeft-=20;
+        secondsLeft-=10;
         getQuestion();
       }
 
