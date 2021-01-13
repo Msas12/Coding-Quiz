@@ -78,7 +78,7 @@ $(document).ready(function () {
   function startCountdown() {
     var timerInterval = setInterval(function () {
       secondsLeft--;
-      countDown.textContent = 'Countdown: ' + secondsLeft;
+      countDown.textContent = 'Timer: ' + secondsLeft;
 
       if (secondsLeft <=0) {
         clearInterval(timerInterval);
@@ -159,6 +159,7 @@ $(document).ready(function () {
 
   function endQuiz() {
     console.log('QuizEnded')
+    $('#score-card').addClass('d-none')
     $('#quiz-container').html(`
     <div class="card bg-dark mx-auto">
       <div id="final-score" class="text-center mb-5 mt-5 h4 text-light"></div>
